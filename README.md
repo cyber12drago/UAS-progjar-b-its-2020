@@ -1,4 +1,4 @@
-## Apabila terjadi error atau request gagal (length)
+## Apabila terjadi error atau request gagal (length). Disarankan.....
 
 1. Restart PC/laptop
 2. Ubah parameter port menjadi 9003 pada function/method next_free_port

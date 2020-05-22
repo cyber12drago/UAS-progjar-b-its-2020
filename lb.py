@@ -70,7 +70,7 @@ class Server(asyncore.dispatcher):
 		self.create_socket(socket.AF_INET, socket.SOCK_STREAM)
 		self.set_reuse_addr()
 		self.bind(('',portnumber))
-		self.listen(5)
+		self.listen(50)
 		self.bservers = BackendList()
 		logging.warning("load balancer running on port {}" . format(portnumber))
 
@@ -123,5 +123,3 @@ def main():
 
 if __name__=="__main__":
 	main()
-
-

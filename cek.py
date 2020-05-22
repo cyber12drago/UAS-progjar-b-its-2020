@@ -45,7 +45,7 @@ class Backend(asyncore.dispatcher_with_send):
 
 	def handle_read(self):
 		try:
-			self.client_socket.send(self.recv(8192))
+			self.client_socket.send(self.recv(1024))
 		except:
 			pass
 	def handle_close(self):
@@ -58,7 +58,7 @@ class Backend(asyncore.dispatcher_with_send):
 
 class ProcessTheClient(asyncore.dispatcher):
 	def handle_read(self):
-		data = self.recv(8192)
+		data = self.recv(1024)
 		if data:
 			self.backend.client_socket = self
 			self.backend.send(data)
@@ -71,7 +71,7 @@ class Server(asyncore.dispatcher):
 		self.create_socket(socket.AF_INET, socket.SOCK_STREAM)
 		self.set_reuse_addr()
 		self.bind(('',portnumber))
-		self.listen(5)
+		self.listen(50)
 		self.bservers = BackendList()
 		logging.warning("load balancer running on port {}" . format(portnumber))
 
